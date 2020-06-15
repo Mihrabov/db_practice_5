@@ -1,45 +1,45 @@
 #Запрос к 2 заданию    
-SELECT nameclient
+SELECT client_name
 FROM cars 
-WHERE Nameclient IN (SELECT Nameclient FROM cars GROUP BY Nameclient HAVING COUNT(*) > 1)
-ORDER BY Nameclient DESC
+WHERE client_name IN (SELECT client_name FROM cars GROUP BY client_name HAVING COUNT(*) > 1)
+ORDER BY client_name DESC
 
   #Запрос к 3 заданию  
-SELECT managersurname,
-COUNT(managersurname) AS sales
+SELECT manager_surname,
+COUNT(manager_surname) AS sales
 FROM cars
-GROUP BY Managersurname
-HAVING sales > 10 and managersurname like '_%'
+GROUP BY manager_surname
+HAVING sales > 10 and manager_surname like '_%'
   
   #Запрос к 4 заданию  
-SELECT managersurname,
-COUNT(managersurname) AS sales
+SELECT manager_surname,
+COUNT(manager_surname) AS sales
 FROM cars
-GROUP BY Managersurname
-HAVING sales < 10 and managersurname like '_%' 
+GROUP BY manager_surname
+HAVING sales < 10 and manager_surname like '_%' 
    
   #Запрос к 5 заданию  
-SELECT typepayment, nameclient
+SELECT payment_type,  client_name
 From cars
-WHERE typepayment = 'безналичная';
+WHERE  payment_type = 'безналичная';
 
   #Запрос к 6 заданию  
-SELECT mark, Model, Nameclient, datesales
+SELECT mark, model, client_name, date_sales
 From cars 
-Where Nameclient = 'Якушев Никита' 
-Order by datesales
+Where client_name = 'Якушев Никита' 
+Order by date_sales
 Limit 5
 
   #Запрос к 7 заданию  
-SELECT typepayment, avg(transactionamount) as transactionavg
+SELECT payment_type, avg(transactionamount) as transactionavg
 From cars
-WHERE typepayment = 'наличная'
+WHERE payment_type = 'наличная'
 SELECT * FROM db_practice_5.cars;
-SELECT typepayment, avg(transactionamount) as transactionavg
+SELECT payment_type, avg(transactionamount) as transactionavg
 From cars
-WHERE typepayment = 'безналичная'
+WHERE payment_type = 'безналичная'
 
   #Запрос к 8 заданию  
-Select managersurname, sum(transactionamount) as allmoney
+Select manager_surname, sum(transactionamount) as allmoney
 From cars
-where managersurname = 'Иванов'
+where manager_surname = 'Иванов'
